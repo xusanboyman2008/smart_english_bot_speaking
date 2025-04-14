@@ -2,7 +2,7 @@ from openai import OpenAI
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key="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",  # Replace with your real key
+    api_key="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",  # Replace with your real key
 )
 
 def get_scores(speech_text):
