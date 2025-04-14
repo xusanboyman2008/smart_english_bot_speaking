@@ -2,7 +2,7 @@ from openai import OpenAI
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key="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",  # Replace with your real key
+    api_key="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",  # Replace with your real key
 )
 
 def get_scores(speech_text):
@@ -17,7 +17,7 @@ def get_scores(speech_text):
 (    Show the student's original speech. If there are grammar mistakes, strike through <s>only the incorrect word</s> (not the whole sentence) and follow it with the corrected word in <i>italics</i>.)
     ✅ Allowed HTML tags: <b>, <i>, <s>, <code>  
     ❌ Never use: <u>, <strike>, <br>, <div>, <p>, etc.  
-    ⚠️ Every tag must be properly closed. If any tag is left open, the response is invalid.
+    ⚠️ Every tag must be properly closed</>. If any tag is left open, the response is invalid.
 
     Then summarize key grammar or sentence structure issues briefly under:
 
@@ -107,7 +107,7 @@ the text is {speech_text}"""
                     "content": [{"type": "text", "text": prompt}]
                 }
             ],
-            max_tokens=2000
+            max_tokens=1000
         )
 
         result = completion.choices[0].message.content
