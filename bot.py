@@ -16,7 +16,7 @@ dp = Dispatcher()
 
 @dp.message(CommandStart())
 async def echo(message: Message):
-    await message.reply("Hello, world!")
+    await message.reply("Hello, world!\nThis is test mode so it maybe works slowly depending on your speech length")
 
 async def send_long_reply(message, text, parse_mode="HTML"):
         max_length = 4096
@@ -34,6 +34,8 @@ async def voice(message: Message):
     file = await bot.get_file(voice.file_id)
     file_path = file.file_path
     destination = f"{voice.file_unique_id}.ogg"
+    if message.chat.personal_chat:
+        await message.reply(text='Scoring you speech')
     await bot.download_file(file_path, destination)
     text = transcript_audio(destination)
     await send_long_reply(message, text)
