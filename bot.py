@@ -9,7 +9,7 @@ from aiogram.types import Message
 from ai import fix_error
 from audio import transcript_audio
 
-token = '7894961736:AAGwAqAzmoMdUYye1-CuU9sf5Db-iKeVdmQ'
+token = '7234794963:AAHHXY24n_GRw3Q65UbXzX1C3H_q48bmmoQ'
 bot = Bot(token=token)
 dp = Dispatcher()
 
