@@ -1,0 +1,12 @@
+pycryptodome~=3.22.0
+opencv-python~=4.11.0.86
+numpy~=2.2.2
+mss~=10.0.0
+requests~=2.32.3
+psutil~=6.1.1
+future~=1.0.0
+openai~=1.73.0
+aiogram~=3.19.0
+matplotlib~=3.10.1
+assemblyai~=0.38.0
+yt-dlp~=2025.3.31
