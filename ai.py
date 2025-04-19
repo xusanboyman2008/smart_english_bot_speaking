@@ -5,6 +5,7 @@ from openai import OpenAI
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
     api_key=os.getenv("OPENROUTER_API_KEY"),  # Replace with your real key
+    # api_key='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',  # Replace with your real key
 )
 
 def get_scores(speech_text):
@@ -76,7 +77,7 @@ def get_scores(speech_text):
 
     try:
         completion = client.chat.completions.create(
-            model="openrouter/optimus-alpha",
+            model="openai/gpt-4.1",
             messages=[
                 {
                     "role": "user",
