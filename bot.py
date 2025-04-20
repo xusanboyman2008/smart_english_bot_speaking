@@ -6,7 +6,6 @@ from aiogram.exceptions import TelegramBadRequest
 from aiogram.filters import CommandStart
 from aiogram.types import Message
 
-from ai import fix_error
 from audio import transcript_audio
 
 token = '7234794963:AAFhLE2UcLSEbrQjNJUJtU3bb9AXEkWYm0I'
@@ -41,4 +40,5 @@ async def voice(message: Message):
 
 
 if __name__ == '__main__':
+    bot.delete_webhook()
     asyncio.run(dp.start_polling(bot, skip_updates=True))
