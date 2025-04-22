@@ -8,7 +8,7 @@ from aiogram.types import Message
 
 from audio import transcript_audio
 
-token = '7234794963:AAGdrkIQIxAaZ6V-5_JkwTaP9kIwn8DcWWs'
+token = '8169416244:AAHeEZKYqZChuoZJSo73rkOFwE8uWdei_vA'
 bot = Bot(token=token)
 dp = Dispatcher()
 
