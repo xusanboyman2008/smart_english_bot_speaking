@@ -4,16 +4,15 @@ from openai import OpenAI
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key=os.getenv("OPENROUTER_API_KEY"),  # Replace with your real key
-    # api_key='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',  # Replace with your real key
+    # api_key=os.getenv("OPENROUTER_API_KEY"),  # Replace with your real key
+    api_key='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',  # Replace with your real key
 )
 
-def get_scores(speech_text):
+def get_scores(speech_text,question=False):
     prompt = f"""
     🧑‍🏫 You are an expert IELTS Speaking examiner.
 
-    You must strictly follow this format for an Aiogram Telegram bot with `parse_mode=HTML`. If you break HTML formatting or use unsupported tags, the bot will crash and never forget to put end tag properly at the end. Be extremely careful.
-
+    You must strictly follow this format for an Aiogram Telegram bot with `parse_mode=HTML`. If you break HTML formatting or use unsupported tags, the bot will crash and never forget to put end tag properly at the end. Be extremely careful and check it it is a real question answer  or not if it is then give it score else never give score all next prompts will me abolish if this does not occurred .
     ---
 
     <b>🎯 STEP 1: CORRECT GRAMMAR MISTAKES</b>  
@@ -71,13 +70,13 @@ def get_scores(speech_text):
 
         (Do NOT repeat it again, just analyze it in steps above.)🎧 <b>STUDENT'S TRANSCRIPTION:</b>  
 
-    Input:
+    Student's Transcription:
     {speech_text}
     """
-
-    try:
-        completion = client.chat.completions.create(
-            model="openai/gpt-4.1",
+    print(prompt)
+    completion = client.chat.completions.create(
+            # model="openai/gpt-4.1",
+            model="google/gemini-2.5-pro-exp-03-25:free",
             messages=[
                 {
                     "role": "user",
@@ -85,16 +84,11 @@ def get_scores(speech_text):
                 }
             ],
             max_tokens=2000
-        )
+    )
 
-        result = completion.choices[0].message.content
-        print("\nAI Feedback:\n", result)
-        return result
-
-    except Exception as e:
-        print("❌ Error occurred:", e)
-        if hasattr(e, 'response') and e.response:
-            print("Error response:", e.response.text)
+    result = completion.choices[0].message.content
+    print("\nAI Feedback:\n", result)
+    return result
 
 def fix_error(speech_text,error):
     prompt=f"""You role is programmer of aiogram and you should fix the text 
