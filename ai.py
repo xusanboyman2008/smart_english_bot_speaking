@@ -4,8 +4,8 @@ from openai import OpenAI
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    # api_key=os.getenv("OPENROUTER_API_KEY"),  # Replace with your real key
-    api_key='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',  # Replace with your real key
+    api_key=os.getenv("OPENROUTER_API_KEY"),  # Replace with your real key
+    # api_key='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',  # Replace with your real key
 )
 
 def get_scores(speech_text,question=False):
