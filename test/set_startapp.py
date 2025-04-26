@@ -22,21 +22,17 @@ def is_admin():
     except AttributeError:
         return False
 
-def add_to_startup(exe_name):
+def add_to_startup(app_name="MyApp"):
     try:
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        exe_path = os.path.join(script_dir, exe_name)
+        exe_path = os.path.abspath(__file__)  # Full path to the current script
 
         key = reg.HKEY_CURRENT_USER
         key_path = r"Software\Microsoft\Windows\CurrentVersion\Run"
-        reg_key = reg.OpenKey(key, key_path, 0, reg.KEY_WRITE)
+        reg_key = reg.OpenKey(key, key_path, 0, reg.KEY_SET_VALUE)
 
-        reg.SetValueEx(reg_key, "MyApp", 0, reg.REG_SZ, exe_path)
+        reg.SetValueEx(reg_key, app_name, 0, reg.REG_SZ, exe_path)
         reg.CloseKey(reg_key)
-
-        # print(f"Successfully added {exe_name} to startup.")
-    except Exception as e:
-        # print(f"Error adding to startup: {e}")
+    except Exception:
         pass
 
 def remove_from_startup():
