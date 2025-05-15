@@ -10,3 +10,7 @@ aiogram~=3.19.0
 matplotlib~=3.10.1
 assemblyai~=0.38.0
 yt-dlp~=2025.3.31
+gtts~=2.5.4
+playsound
+pygame
+Kivy~=2.3.1
